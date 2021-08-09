@@ -1,12 +1,22 @@
 import React from "react";
+import { TouchableOpacityProps } from "react-native";
 
 import { Text } from "react-native";
 
 import { Btn } from './styles';
 
-export const Button: React.FC = () => {
+type Props = {
+    opacity?: number
+    height?: number
+}
+
+export const Button: React.FC<Props> = ({ opacity, height, ...rest }) => {
     return (
-        <Btn opacity={0.2}>
+        <Btn {...{
+            opacity,
+            height,
+            ...rest
+        }}>
             <Text style={{color: '#fff'}}>{'>'}</Text>
         </Btn>
     );

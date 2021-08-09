@@ -12,7 +12,7 @@ export const Welcome: React.FC = () => (
       <Title />
       <Image source={Watering}/>
       <Subtitle />
-      <Button>
+      <Button opacity={ 0.1 }>
         <Text>{'>'}</Text>
       </Button>
     </Container>
