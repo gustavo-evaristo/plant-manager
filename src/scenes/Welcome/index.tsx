@@ -9,7 +9,7 @@ import Watering from '../../assets/watering.png';
 
 export const Welcome: React.FC = () => (
     <Container>
-      <Title />
+      <Title text={'Gerencie \n suas plantas de \n forma fácil'}/>
       <Image source={Watering}/>
       <Subtitle />
       <ButtonStyled small radius={16}>
