@@ -2,9 +2,7 @@ import React from 'react';
 import { Welcome } from './src/scenes';
 
 const App: React.FC = () => (
-    <>
-      <Welcome/>
-    </>
+    <Welcome/>
   );
 
 export default App;

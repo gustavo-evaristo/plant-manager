@@ -1,5 +1,6 @@
 import styled from 'styled-components/native';
 import colors from '../../styles/colors';
+import { Button } from '../../components';
 
 export const Container = styled.SafeAreaView`
     flex: 1;

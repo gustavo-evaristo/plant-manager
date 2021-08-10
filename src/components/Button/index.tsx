@@ -6,15 +6,23 @@ import { Text } from "react-native";
 import { Btn } from './styles';
 
 type Props = {
-    opacity?: number
-    height?: number
+    activeOpacity?: number;
+    height?: number;
+    small?: boolean;
+    medium?: boolean;
+    radius?: number;
+    background?: string;
 }
 
-export const Button: React.FC<Props> = ({ opacity, height, ...rest }) => {
+export const Button: React.FC<Props> = ({ activeOpacity, height, small, medium, radius, background, ...rest }) => {
     return (
         <Btn {...{
-            opacity,
+            activeOpacity,
             height,
+            small,
+            medium,
+            radius,
+            background,
             ...rest
         }}>
             <Text style={{color: '#fff'}}>{'>'}</Text>
