@@ -24,8 +24,7 @@ export const Button: React.FC<Props> = ({ activeOpacity, height, small, medium, 
             radius,
             background,
             ...rest
-        }}>
-            <Text style={{color: '#fff'}}>{'>'}</Text>
-        </Btn>
+        }}/>
+
     );
 }
