@@ -10,13 +10,14 @@ type Props = {
     height?: number;
     small?: boolean;
     medium?: boolean;
-    radius?: number;
+    radius?: string;
     background?: string;
+    onPress?: ()  => void;
 }
 
-export const Button: React.FC<Props> = ({ activeOpacity, height, small, medium, radius, background, ...rest }) => {
+export const Button: React.FC<Props> = ({ activeOpacity, height, small, medium, radius, background, onPress, ...rest }) => {
     return (
-        <Btn {...{
+        <Btn onPress={onPress} {...{
             activeOpacity,
             height,
             small,
@@ -25,6 +26,7 @@ export const Button: React.FC<Props> = ({ activeOpacity, height, small, medium, 
             background,
             ...rest
         }}/>
+
 
     );
 }

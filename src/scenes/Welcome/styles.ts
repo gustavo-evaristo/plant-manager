@@ -9,6 +9,7 @@ export const Container = styled.SafeAreaView`
     flex: 1;
     align-items: center;
     justify-content: space-around;
+    background: ${colors.white};
 `;
 
 export const Image = styled.Image.attrs({

@@ -5,7 +5,7 @@ import { ifStyle } from '@platformbuilders/helpers'
 type Props = {
     height?: number;
     activeOpacity?: number;
-    radius?: number;
+    radius?: string;
     background?: string;
 }
 
@@ -15,10 +15,10 @@ const isMedium = ifStyle('medium')
 export const Btn = styled.TouchableOpacity.attrs((props: Props) => ({
     activeOpacity: props.activeOpacity ? props.activeOpacity : 0.7,
 }))`
-    width: ${isSmall(64, isMedium(98, 124))};
-    height: ${(props: Props) => props.height ? props.height : '56px'}
+    width: ${isSmall(64, isMedium(98, 182))};
+    height: ${(props: Props) => props.height ? props.height : '56px'};
     background: ${(props: Props) => props.background ? props.background : colors.green};
     justify-content: center;
     align-items: center;
-    border-radius: ${(props: Props) => props.radius ? props.radius : 0};
+    border-radius: ${(props: Props) => props.radius ? props.radius : 'none'};
 `;

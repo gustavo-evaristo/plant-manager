@@ -1,5 +1,7 @@
 import React from 'react';
-import { Welcome } from './src/scenes';
+import { Welcome, UserIdentification, Confirmation } from './src/scenes';
+
+import { Routes } from './src/routes'
 
 import AppLoading from 'expo-app-loading';
 
@@ -16,7 +18,7 @@ const App: React.FC = () => {
     return <AppLoading />
 
   return (
-    <Welcome/>
+    <Routes />
   );
 }
 export default App;

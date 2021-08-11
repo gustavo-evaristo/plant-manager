@@ -2,6 +2,21 @@ import React from "react";
 
 import { Text } from './styles';
 
-export const Subtitle: React.FC = () => (
-    <Text>Não esqueça de regar suas plantas. {'\n'} Nós cuidamos de lembrar você sempre que precisar</Text>
+type Props = {
+    text: string;
+    color?: string;
+    size?: number;
+    weight?: string;
+    lineHeight?: number;
+}
+
+export const Subtitle: React.FC<Props> = ({ text, color, size, lineHeight, weight, ...rest}) => (
+    <Text {...{
+        text,
+        color,
+        size,
+        weight,
+        lineHeight,
+        ...rest
+    }}>{text}</Text>
 )
