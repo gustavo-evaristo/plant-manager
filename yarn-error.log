@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js add @react-navigation/nativeexpo install react-native-screens react-native-safe-area-context
+  /usr/bin/node /usr/share/yarn/bin/yarn.js add @types/react-navigation/native -D
 
 PATH: 
   /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/gustavo/Android/Sdk/emulator:/home/gustavo/Android/Sdk/tools:/home/gustavo/Android/Sdk/tools/bin:/home/gustavo/Android/Sdk/platform-tools:/home/gustavo/android-studio/bin:/home/gustavo/Android/Sdk/emulator:/home/gustavo/Android/Sdk/tools:/home/gustavo/Android/Sdk/tools/bin:/home/gustavo/Android/Sdk/platform-tools:/home/gustavo/android-studio/bin
@@ -14,8 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@react-navigation%2fnativeexpo: Not found
-      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66988:18)
+  Error: https://registry.yarnpkg.com/@types%2freact-navigation/native: Request "https://registry.yarnpkg.com/@types%2freact-navigation/native" returned a 405
+      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:66997:18)
       at Request.self.callback (/usr/share/yarn/lib/cli.js:140749:22)
       at Request.emit (events.js:375:28)
       at Request.<anonymous> (/usr/share/yarn/lib/cli.js:141721:10)

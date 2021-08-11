@@ -33,6 +33,7 @@
     "@types/": "react-navigation/stack",
     "@types/react": "~16.9.35",
     "@types/react-native": "~0.63.2",
+    "@types/react-navigation": "^3.4.0",
     "@types/styled-components": "^5.1.12",
     "@types/styled-components-react-native": "^5.1.1",
     "@typescript-eslint/parser": "^4.29.1",

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import colors from '../../styles/colors';
+import { useNavigation } from '@react-navigation/native'
+
 
 import { Container, Content, Form, Input, TitleStyled, Icon, StyledButton, TextButton, KeyboardAvoidingViewStyled, Header } from './styles';
 
@@ -13,6 +14,13 @@ export const UserIdentification: React.FC = () => {
 
     const handleText = (values: string) => setTextValue(values);
 
+    const navigation = useNavigation<any>();
+
+    const handleSubmit = () => {
+      navigation.push('Confirmation');
+    };
+
+
     return(
         <Container>
             <KeyboardAvoidingViewStyled>
@@ -23,7 +31,7 @@ export const UserIdentification: React.FC = () => {
                             <TitleStyled text={'Como podemos \n chamar você?'}/>
                         </Header>
                         <Input active={active} onFocus={handleFocus} onBlur={handleBlur} onChangeText={(values) => handleText(values)}/>
-                        <StyledButton radius={'16px'} height={56}>
+                        <StyledButton radius={'16px'} height={56} onPress={handleSubmit}>
                             <TextButton>Confirmar</TextButton>
                         </StyledButton>
                     </Form>
