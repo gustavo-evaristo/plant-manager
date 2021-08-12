@@ -16,7 +16,7 @@ import {
 export const PlantSelect: React.FC = () => {
   const [active, setActive] = useState<string>('Sala');
 
-  const items: string[] = ['Sala', 'Quarto', 'Cozinha', 'Banheiro', 'Jardim'];
+  const items: string[] = ['Sala', 'Quarto', 'Cozinha', 'Banheiro', 'Jardim', 'Varanda'];
 
   return (
     <Container>

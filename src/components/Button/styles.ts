@@ -13,5 +13,5 @@ export const Btn = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   border-radius: 16px;
-  opacity: ${isDisabled('0.3px', '1px')};
+  opacity: ${isDisabled(0.3, 1)};
 `;

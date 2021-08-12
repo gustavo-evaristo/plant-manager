@@ -2,7 +2,6 @@ import React from 'react';
 import { Btn, TextButton } from './styles';
 
 type Props = {
-  activeOpacity?: number;
   background?: string;
   active?: boolean;
   tagName: string;
