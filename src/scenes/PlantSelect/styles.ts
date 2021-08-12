@@ -25,7 +25,7 @@ export const DescriptionSpan = styled(Subtitle)`
 `;
 
 export const TagButtonStyled = styled(TagButton)`
-  margin: 3px 2px;
+  margin: 3px;
 `;
 
 export const TagButtonList = styled.ScrollView.attrs({
