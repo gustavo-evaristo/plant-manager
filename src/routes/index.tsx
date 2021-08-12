@@ -4,8 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import { AppRoutes } from './stack.routes';
 
-export const Routes = () => (
-    <NavigationContainer>
-        <AppRoutes />
-    </NavigationContainer>
-)
+export const Routes: React.FC = () => (
+  <NavigationContainer>
+    <AppRoutes />
+  </NavigationContainer>
+);
