@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+/* eslint-disable-next-line */
 import avatar from '../../assets/avatar.jpg';
 
 import {

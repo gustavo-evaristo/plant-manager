@@ -1,19 +1,19 @@
-declare module '*.png' {
-  const content: any;
-  export default content;
-}
-
 declare module '*.jpg' {
-  const content: any;
-  export default content;
+  const contentJpg: any;
+  export default contentJpg;
 }
 
 declare module '*.jpeg' {
-  const content: any;
-  export default content;
+  const contentJpg: any;
+  export default contentJpg;
 }
 
 declare module '*.svg' {
-  const content: any;
-  export default content;
+  const contentSvg: any;
+  export default contentSvg;
+}
+
+declare module '*.png' {
+  const contentPng: any;
+  export default contentPng;
 }
