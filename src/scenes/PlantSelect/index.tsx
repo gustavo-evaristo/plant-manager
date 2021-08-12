@@ -14,6 +14,9 @@ import {
 
 export const PlantSelect: React.FC = () => {
   const [active, setActive] = useState<string>('Sala');
+
+  const items: string[] = ['Sala', 'Quarto', 'Cozinha', 'Banheiro', 'Jardim'];
+
   return (
     <Container>
       <WrapperHeader>
@@ -22,11 +25,9 @@ export const PlantSelect: React.FC = () => {
         <DescriptionSpan text={'você quer colocar sua planta?'} />
       </WrapperHeader>
       <TagButtonList>
-        <TagButtonStyled tagName="Sala" onPress={() => setActive('Sala')} active={active === 'Sala'} />
-        <TagButtonStyled tagName="Quarto" onPress={() => setActive('Quarto')} active={active === 'Quarto'} />
-        <TagButtonStyled tagName="Cozinha" onPress={() => setActive('Cozinha')} active={active === 'Cozinha'} />
-        <TagButtonStyled tagName="Banheiro" onPress={() => setActive('Banheiro')} active={active === 'Banheiro'} />
-        <TagButtonStyled tagName="Jardim" onPress={() => setActive('Jardim')} active={active === 'Jardim'} />
+        {items.map((item: string, id: number) => (
+          <TagButtonStyled key={id} tagName={item} onPress={() => setActive(item)} active={active === item} />
+        ))}
       </TagButtonList>
     </Container>
   );

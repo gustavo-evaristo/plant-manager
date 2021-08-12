@@ -18,19 +18,15 @@ import { Keyboard } from 'react-native';
 
 export const UserIdentification: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);
-  const [textValue, setTextValue] = useState<string>();
+  const [name, setName] = useState<string>();
 
   const handleFocus = () => setActive(true);
 
-  const handleBlur = () => !textValue && setActive(false);
-
-  const handleText = (values: string) => setTextValue(values);
+  const handleBlur = () => !name && setActive(false);
 
   const navigation = useNavigation<any>();
 
-  const handleSubmit = () => {
-    navigation.push('Confirmation');
-  };
+  const handleSubmit = () => navigation.push('Confirmation');
 
   return (
     <Container>
@@ -46,9 +42,9 @@ export const UserIdentification: React.FC = () => {
                 active={active}
                 onFocus={handleFocus}
                 onBlur={handleBlur}
-                onChangeText={(values) => handleText(values)}
+                onChangeText={(values: string) => setName(values)}
               />
-              <StyledButton onPress={handleSubmit}>
+              <StyledButton onPress={() => name && handleSubmit()} disabled={!name}>
                 <TextButton>Confirmar</TextButton>
               </StyledButton>
             </Form>
