@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-
-/* eslint-disable-next-line */
+import React, { useState, useEffect } from 'react';
+import { api } from '../../services/api';
 import avatar from '../../assets/avatar.jpg';
 
 import {
@@ -13,10 +12,32 @@ import {
   WrapperHeader,
 } from './styles';
 
-export const PlantSelect: React.FC = () => {
-  const [active, setActive] = useState<string>('Sala');
+type PlantsEnvironmentType = {
+  key: string;
+  title: string;
+};
 
-  const items: string[] = ['Sala', 'Quarto', 'Cozinha', 'Banheiro', 'Jardim', 'Varanda'];
+export const PlantSelect: React.FC = () => {
+  const [active, setActive] = useState<string>('Todos');
+
+  const [plantsEnvironments, setPlantsEnvironments] = useState<PlantsEnvironmentType[]>([]);
+
+  const fetchPlantsEnvironments = async () => {
+    const { data } = await api.get('/plants_environments');
+
+    setPlantsEnvironments([
+      {
+        key: 'all',
+        title: 'Todos',
+      },
+
+      ...data,
+    ]);
+  };
+
+  useEffect(() => {
+    fetchPlantsEnvironments();
+  }, []);
 
   return (
     <Container>
@@ -26,8 +47,15 @@ export const PlantSelect: React.FC = () => {
         <DescriptionSpan text={'você quer colocar sua planta?'} />
       </WrapperHeader>
       <TagButtonList>
-        {items.map((item: string, id: number) => (
-          <TagButtonStyled key={id} tagName={item} onPress={() => setActive(item)} active={active === item} />
+        {plantsEnvironments.map((item: PlantsEnvironmentType, id: number) => (
+          <TagButtonStyled
+            key={id}
+            tagName={item.title}
+            onPress={() => {
+              setActive(item.title);
+            }}
+            active={active === item.title}
+          />
         ))}
       </TagButtonList>
     </Container>
