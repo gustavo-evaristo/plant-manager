@@ -22,7 +22,7 @@ export const Welcome: React.FC = () => {
       <Subtitle
         text={'Não esqueça mais de regar suas \n plantas. Nós cuidamos de lembrar você \n sempre que precisar.'}
       />
-      <ButtonStyled onPress={handleNavigation} small radius={'16px'}>
+      <ButtonStyled onPress={handleNavigation} small>
         <Icon />
       </ButtonStyled>
     </Container>

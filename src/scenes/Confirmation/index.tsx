@@ -8,7 +8,7 @@ export const Confirmation: React.FC = () => {
       <Icon>😉</Icon>
       <TitleStyled text={'Prontinho'} />
       <Description text={'Agora vamos começar a cuidar das suas plantinhas com muito cuidado.'} />
-      <StyledButton radius={'16px'} height={56}>
+      <StyledButton>
         <TextButton>Confirmar</TextButton>
       </StyledButton>
     </Container>

@@ -14,7 +14,7 @@ export const Container = styled.SafeAreaView`
 export const Image = styled.Image.attrs({
   resizeMode: 'contain',
 })`
-  height: ${Dimensions.get('window').width * 0.7};
+  height: ${Dimensions.get('window').width * 0.7}px;
 `;
 
 export const ButtonStyled = styled(Button)``;

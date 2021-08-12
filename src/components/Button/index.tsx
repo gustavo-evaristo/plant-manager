@@ -3,7 +3,7 @@ import { Btn } from './styles';
 
 type Props = {
   activeOpacity?: number;
-  height?: number;
+  height?: string;
   small?: boolean;
   medium?: boolean;
   radius?: string;

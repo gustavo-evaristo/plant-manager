@@ -4,16 +4,16 @@ import fonts from '../../styles/fonts';
 
 type Props = {
   color?: string;
-  size?: number;
+  size?: string;
   weight?: string;
-  lineHeight?: number;
+  lineHeight?: string;
 };
 
 export const Text = styled.Text`
   font-family: ${fonts.text};
-  font-size: ${(props: Props) => (props.size ? props.size : 17)};
+  font-size: ${(props: Props) => (props.size ? props.size : '17px')};
   font-weight: ${(props: Props) => (props.weight ? props.weight : '400')};
   text-align: center;
   color: ${(props: Props) => (props.color ? props.color : colors.heading)};
-  line-height: ${(props: Props) => (props.lineHeight ? props.lineHeight : 25)};
+  line-height: ${(props: Props) => (props.lineHeight ? props.lineHeight : '25px')};
 `;

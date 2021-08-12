@@ -11,8 +11,10 @@ import {
   StyledButton,
   TextButton,
   KeyboardAvoidingViewStyled,
+  TouchableWithoutFeedbackStyled,
   Header,
 } from './styles';
+import { Keyboard } from 'react-native';
 
 export const UserIdentification: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);
@@ -33,23 +35,25 @@ export const UserIdentification: React.FC = () => {
   return (
     <Container>
       <KeyboardAvoidingViewStyled>
-        <Content>
-          <Form>
-            <Header>
-              <Icon> {active ? '😄' : '😃'}</Icon>
-              <TitleStyled text={'Como podemos \n chamar você?'} />
-            </Header>
-            <Input
-              active={active}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              onChangeText={(values) => handleText(values)}
-            />
-            <StyledButton radius={'16px'} height={56} onPress={handleSubmit}>
-              <TextButton>Confirmar</TextButton>
-            </StyledButton>
-          </Form>
-        </Content>
+        <TouchableWithoutFeedbackStyled onPress={Keyboard.dismiss}>
+          <Content>
+            <Form>
+              <Header>
+                <Icon> {active ? '😄' : '😃'}</Icon>
+                <TitleStyled text={'Como podemos \n chamar você?'} />
+              </Header>
+              <Input
+                active={active}
+                onFocus={handleFocus}
+                onBlur={handleBlur}
+                onChangeText={(values) => handleText(values)}
+              />
+              <StyledButton onPress={handleSubmit}>
+                <TextButton>Confirmar</TextButton>
+              </StyledButton>
+            </Form>
+          </Content>
+        </TouchableWithoutFeedbackStyled>
       </KeyboardAvoidingViewStyled>
     </Container>
   );

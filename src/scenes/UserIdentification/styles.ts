@@ -23,12 +23,17 @@ export const KeyboardAvoidingViewStyled = styled(KeyboardAvoidingView).attrs({
   align-items: center;
   justify-content: space-around;
   background: ${colors.white};
-  width: 80%;
+  width: 100%;
+`;
+
+export const TouchableWithoutFeedbackStyled = styled.TouchableWithoutFeedback`
+  flex: 1;
+  width: 100%;
 `;
 
 export const Content = styled.View`
   flex: 1;
-  width: 100%;
+  width: 80%;
 `;
 
 export const Header = styled.View`
@@ -39,11 +44,11 @@ export const Form = styled.KeyboardAvoidingView`
   flex: 1;
   justify-content: center;
   align-items: center;
-  padding: 54px 0;
+  padding: 54px 0px;
 `;
 
 export const Input = styled.TextInput`
-  border-bottom-width: 1;
+  border-bottom-width: 1px;
   border-color: ${(props: Props) => (props.active ? colors.green : colors.gray)};
   color: ${colors.heading};
   width: 100%;
@@ -62,6 +67,7 @@ export const Icon = styled.Text`
 
 export const StyledButton = styled(Button)`
   margin-top: 40px;
+  height: 56px;
 `;
 
 export const TextButton = styled.Text`

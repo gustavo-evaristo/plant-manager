@@ -5,9 +5,9 @@ import { Text } from './styles';
 type Props = {
   text: string;
   color?: string;
-  size?: number;
+  size?: string;
   weight?: string;
-  lineHeight?: number;
+  lineHeight?: string;
 };
 
 export const Subtitle: React.FC<Props> = ({ text, color, size, lineHeight, weight, ...rest }) => (
