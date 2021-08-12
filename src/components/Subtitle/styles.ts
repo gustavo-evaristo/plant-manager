@@ -6,7 +6,6 @@ type Props = {
   color?: string;
   size?: string;
   weight?: string;
-  lineHeight?: string;
 };
 
 export const Text = styled.Text`
@@ -15,5 +14,4 @@ export const Text = styled.Text`
   font-weight: ${(props: Props) => (props.weight ? props.weight : '400')};
   text-align: center;
   color: ${(props: Props) => (props.color ? props.color : colors.heading)};
-  line-height: ${(props: Props) => (props.lineHeight ? props.lineHeight : '25px')};
 `;

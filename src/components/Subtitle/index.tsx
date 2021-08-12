@@ -7,17 +7,15 @@ type Props = {
   color?: string;
   size?: string;
   weight?: string;
-  lineHeight?: string;
 };
 
-export const Subtitle: React.FC<Props> = ({ text, color, size, lineHeight, weight, ...rest }) => (
+export const Subtitle: React.FC<Props> = ({ text, color, size, weight, ...rest }) => (
   <Text
     {...{
       text,
       color,
       size,
       weight,
-      lineHeight,
       ...rest,
     }}
   >
