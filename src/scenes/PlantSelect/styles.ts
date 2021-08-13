@@ -3,6 +3,7 @@ import { Card, Header, Subtitle, TagButton, Title } from '../../components';
 
 export const Container = styled.View`
   width: 100%;
+  height: 100%;
 `;
 
 export const WrapperHeader = styled.View`
@@ -27,32 +28,33 @@ export const DescriptionSpan = styled(Subtitle)`
 
 export const TagButtonStyled = styled(TagButton)``;
 
+export const TagButtonContainer = styled.View`
+  width: 100%;
+  height: 50px;
+  margin-vertical: 10px;
+`;
+
 export const TagButtonList = styled.ScrollView.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
 })`
   width: 100%;
-  height: 80px;
+  height: 100%;
   padding-left: 25px;
 `;
 
 export const TagButtonContent = styled.View`
   height: 100%;
   justify-content: center;
-  margin-horizontal: 1.5px;
+  margin-horizontal: 2px;
 `;
 
-export const PlantsContainer = styled.ScrollView.attrs({
-  showsHorizontalScrollIndicator: false,
-})`
-  width: 100%;
-`;
+export const PlantsContent = styled.FlatList``;
 
-export const PlantsContent = styled.View`
-  width: 100%;
-  flex-flow: row wrap;
-  align-items: center;
+export const PlantsContainer = styled.View`
+  padding-horizontal: 20px;
   justify-content: center;
+  flex: 1;
 `;
 
 export const CardPlant = styled(Card)`

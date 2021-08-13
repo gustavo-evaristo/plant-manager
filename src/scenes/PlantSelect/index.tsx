@@ -13,6 +13,7 @@ import {
   PlantsContainer,
   PlantsContent,
   TagButtonContent,
+  TagButtonContainer,
   CardPlant,
 } from './styles';
 
@@ -21,13 +22,27 @@ type EnvironmentsType = {
   title: string;
 };
 
+type Plants = {
+  id: number;
+  name: string;
+  about: string;
+  water_tips: string;
+  photo: string;
+  environments: string[];
+  frequency: {
+    times: number;
+    repeat_every: string;
+  };
+};
+
 export const PlantSelect: React.FC = () => {
-  const [active, setActive] = useState<string>('Todos');
+  const [active, setActive] = useState<string>('all');
   const [environments, setEnvironments] = useState<EnvironmentsType[]>([]);
-  const [plants, setPlants] = useState([]);
+  const [plants, setPlants] = useState<Plants[]>([]);
+  const [filtered, setFiltered] = useState<Plants[]>(plants);
 
   const getEnvironments = async () => {
-    const { data } = await api.get('plants_environments');
+    const { data } = await api.get('plants_environments?_sort=title');
 
     setEnvironments([
       {
@@ -40,13 +55,27 @@ export const PlantSelect: React.FC = () => {
   };
 
   const getPlants = async () => {
-    const { data } = await api.get('plants');
+    const { data } = await api.get('plants?_sort=name');
 
     setPlants(data);
+    setFiltered(data);
+  };
+
+  const handleEnvironments = (environment: string) => {
+    setActive(environment);
+
+    if (environment === 'all') return setFiltered(plants);
+
+    const filteredPlants = plants.filter((plant) => plant.environments.includes(environment));
+
+    setFiltered(filteredPlants);
   };
 
   useEffect(() => {
     getEnvironments();
+  }, []);
+
+  useEffect(() => {
     getPlants();
   }, []);
 
@@ -57,25 +86,26 @@ export const PlantSelect: React.FC = () => {
         <Description text={'Em qual ambiente'} />
         <DescriptionSpan text={'você quer colocar sua planta?'} />
       </WrapperHeader>
-      <TagButtonList>
-        {environments.map((item: EnvironmentsType, id: number) => (
-          <TagButtonContent key={id}>
-            <TagButtonStyled
-              tagName={item.title}
-              onPress={() => {
-                setActive(item.title);
-              }}
-              active={active === item.title}
-            />
-          </TagButtonContent>
-        ))}
-      </TagButtonList>
-      <PlantsContainer>
-        <PlantsContent>
-          {plants.map((item: any) => (
-            <CardPlant key={item.id} image={item.photo} title={item.name} />
+      <TagButtonContainer>
+        <TagButtonList>
+          {environments.map((item: EnvironmentsType, id: number) => (
+            <TagButtonContent key={id}>
+              <TagButtonStyled
+                tagName={item.title}
+                onPress={() => handleEnvironments(item.key)}
+                active={active === item.key}
+              />
+            </TagButtonContent>
           ))}
-        </PlantsContent>
+        </TagButtonList>
+      </TagButtonContainer>
+      <PlantsContainer>
+        <PlantsContent
+          data={filtered}
+          renderItem={({ item }: any) => <CardPlant key={item.id} image={item.photo} title={item.name} />}
+          showsVerticalScrollIndicator={false}
+          numColumns={2}
+        />
       </PlantsContainer>
     </Container>
   );
