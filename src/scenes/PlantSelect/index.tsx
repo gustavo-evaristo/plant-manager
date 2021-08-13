@@ -10,22 +10,26 @@ import {
   TagButtonStyled,
   TagButtonList,
   WrapperHeader,
+  PlantsContainer,
+  PlantsContent,
+  TagButtonContent,
+  CardPlant,
 } from './styles';
 
-type PlantsEnvironmentType = {
+type EnvironmentsType = {
   key: string;
   title: string;
 };
 
 export const PlantSelect: React.FC = () => {
   const [active, setActive] = useState<string>('Todos');
+  const [environments, setEnvironments] = useState<EnvironmentsType[]>([]);
+  const [plants, setPlants] = useState([]);
 
-  const [plantsEnvironments, setPlantsEnvironments] = useState<PlantsEnvironmentType[]>([]);
+  const getEnvironments = async () => {
+    const { data } = await api.get('plants_environments');
 
-  const fetchPlantsEnvironments = async () => {
-    const { data } = await api.get('/plants_environments');
-
-    setPlantsEnvironments([
+    setEnvironments([
       {
         key: 'all',
         title: 'Todos',
@@ -35,8 +39,15 @@ export const PlantSelect: React.FC = () => {
     ]);
   };
 
+  const getPlants = async () => {
+    const { data } = await api.get('plants');
+
+    setPlants(data);
+  };
+
   useEffect(() => {
-    fetchPlantsEnvironments();
+    getEnvironments();
+    getPlants();
   }, []);
 
   return (
@@ -47,17 +58,25 @@ export const PlantSelect: React.FC = () => {
         <DescriptionSpan text={'você quer colocar sua planta?'} />
       </WrapperHeader>
       <TagButtonList>
-        {plantsEnvironments.map((item: PlantsEnvironmentType, id: number) => (
-          <TagButtonStyled
-            key={id}
-            tagName={item.title}
-            onPress={() => {
-              setActive(item.title);
-            }}
-            active={active === item.title}
-          />
+        {environments.map((item: EnvironmentsType, id: number) => (
+          <TagButtonContent key={id}>
+            <TagButtonStyled
+              tagName={item.title}
+              onPress={() => {
+                setActive(item.title);
+              }}
+              active={active === item.title}
+            />
+          </TagButtonContent>
         ))}
       </TagButtonList>
+      <PlantsContainer>
+        <PlantsContent>
+          {plants.map((item: any) => (
+            <CardPlant key={item.id} image={item.photo} title={item.name} />
+          ))}
+        </PlantsContent>
+      </PlantsContainer>
     </Container>
   );
 };
