@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { inject, observer } from 'mobx-react';
+import { observableStore } from '../../store';
 
 import {
   Container,
@@ -14,11 +16,14 @@ import {
   TouchableWithoutFeedbackStyled,
   Header,
 } from './styles';
+
 import { Keyboard } from 'react-native';
 
-export const UserIdentification: React.FC = () => {
+const UserIdentification: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);
   const [name, setName] = useState<string>();
+
+  const app = observableStore;
 
   const handleFocus = () => setActive(true);
 
@@ -26,7 +31,10 @@ export const UserIdentification: React.FC = () => {
 
   const navigation = useNavigation<any>();
 
-  const handleSubmit = () => navigation.push('Confirmation');
+  const handleSubmit = () => {
+    navigation.push('Confirmation');
+    app.setName(name);
+  };
 
   return (
     <Container>
@@ -54,3 +62,5 @@ export const UserIdentification: React.FC = () => {
     </Container>
   );
 };
+
+export default inject('observableStore')(observer(UserIdentification));

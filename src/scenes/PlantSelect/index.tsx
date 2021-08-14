@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import avatar from '../../assets/avatar.jpg';
 import { Load } from '../../components';
+import { observableStore } from '../../store';
 
 import {
   Container,
@@ -42,6 +43,8 @@ export const PlantSelect: React.FC = () => {
   const [plants, setPlants] = useState<Plants[]>([]);
   const [filtered, setFiltered] = useState<Plants[]>(plants);
   const [loading, setLoading] = useState(true);
+
+  const app = observableStore;
 
   const getEnvironments = async () => {
     const { data } = await api.get('plants_environments?_sort=title');
@@ -87,7 +90,7 @@ export const PlantSelect: React.FC = () => {
   return (
     <Container>
       <WrapperHeader>
-        <StyledHeader title={'Olá,'} name={'Gustavo'} avatar={avatar} />
+        <StyledHeader title={'Olá,'} name={app.name} avatar={avatar} />
         <Description text={'Em qual ambiente'} />
         <DescriptionSpan text={'você quer colocar sua planta?'} />
       </WrapperHeader>

@@ -1,4 +1,4 @@
 export * from './Welcome';
-export * from './UserIdentification';
+export { default as UserIdentification } from './UserIdentification';
 export * from './Confirmation';
 export * from './PlantSelect';
