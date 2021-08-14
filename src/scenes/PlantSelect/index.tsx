@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import avatar from '../../assets/avatar.jpg';
+import { Load } from '../../components';
 
 import {
   Container,
@@ -40,6 +41,7 @@ export const PlantSelect: React.FC = () => {
   const [environments, setEnvironments] = useState<EnvironmentsType[]>([]);
   const [plants, setPlants] = useState<Plants[]>([]);
   const [filtered, setFiltered] = useState<Plants[]>(plants);
+  const [loading, setLoading] = useState(true);
 
   const getEnvironments = async () => {
     const { data } = await api.get('plants_environments?_sort=title');
@@ -59,6 +61,7 @@ export const PlantSelect: React.FC = () => {
 
     setPlants(data);
     setFiltered(data);
+    setLoading(false);
   };
 
   const handleEnvironments = (environment: string) => {
@@ -78,6 +81,8 @@ export const PlantSelect: React.FC = () => {
   useEffect(() => {
     getPlants();
   }, []);
+
+  if (loading) return <Load />;
 
   return (
     <Container>
