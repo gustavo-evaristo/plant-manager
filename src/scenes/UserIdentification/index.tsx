@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { inject, observer } from 'mobx-react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setStore } from '../../store';
 
 import {
   Container,
@@ -32,7 +31,7 @@ const UserIdentification: React.FC = () => {
   const handleSubmit = async () => {
     navigation.push('Confirmation');
 
-    await AsyncStorage.setItem('@plantmanager:username', name);
+    await setStore('@plantmanager:username', name);
   };
 
   return (
@@ -62,4 +61,4 @@ const UserIdentification: React.FC = () => {
   );
 };
 
-export default inject('observableStore')(observer(UserIdentification));
+export default UserIdentification;
