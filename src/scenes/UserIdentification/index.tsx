@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { inject, observer } from 'mobx-react';
-import { observableStore } from '../../store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   Container,
@@ -23,17 +23,16 @@ const UserIdentification: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);
   const [name, setName] = useState<string>();
 
-  const app = observableStore;
-
   const handleFocus = () => setActive(true);
 
   const handleBlur = () => !name && setActive(false);
 
   const navigation = useNavigation<any>();
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     navigation.push('Confirmation');
-    app.setName(name);
+
+    await AsyncStorage.setItem('@plantmanager:username', name);
   };
 
   return (

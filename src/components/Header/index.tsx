@@ -5,7 +5,7 @@ import { Container, Content, TitleName, TitleStyled, Avatar } from './styles';
 type Props = {
   name: string;
   avatar: ImageSourcePropType;
-  title: string;
+  title?: string;
 };
 
 export const Header: React.FC<Props> = ({ name, avatar, title, ...rest }) => (

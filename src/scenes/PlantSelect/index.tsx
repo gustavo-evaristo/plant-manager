@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../../services/api';
 import avatar from '../../assets/avatar.jpg';
 import { Load } from '../../components';
+// eslint-disable-next-line
 import { observableStore } from '../../store';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {
   Container,
@@ -43,8 +45,13 @@ export const PlantSelect: React.FC = () => {
   const [plants, setPlants] = useState<Plants[]>([]);
   const [filtered, setFiltered] = useState<Plants[]>(plants);
   const [loading, setLoading] = useState(true);
+  const [name, setName] = useState<string>('');
 
-  const app = observableStore;
+  const handleUsername = async () => {
+    const username = await AsyncStorage.getItem('@plantmanager:username');
+
+    setName(username);
+  };
 
   const getEnvironments = async () => {
     const { data } = await api.get('plants_environments?_sort=title');
@@ -64,7 +71,10 @@ export const PlantSelect: React.FC = () => {
 
     setPlants(data);
     setFiltered(data);
-    setLoading(false);
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
   };
 
   const handleEnvironments = (environment: string) => {
@@ -79,9 +89,7 @@ export const PlantSelect: React.FC = () => {
 
   useEffect(() => {
     getEnvironments();
-  }, []);
-
-  useEffect(() => {
+    handleUsername();
     getPlants();
   }, []);
 
@@ -90,7 +98,7 @@ export const PlantSelect: React.FC = () => {
   return (
     <Container>
       <WrapperHeader>
-        <StyledHeader title={'Olá,'} name={app.name} avatar={avatar} />
+        <StyledHeader title={'Olá,'} name={name} avatar={avatar} />
         <Description text={'Em qual ambiente'} />
         <DescriptionSpan text={'você quer colocar sua planta?'} />
       </WrapperHeader>
