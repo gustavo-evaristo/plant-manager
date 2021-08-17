@@ -1,22 +1,20 @@
 import React, { useState } from 'react';
+import { Keyboard } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { setStore } from '../../store';
-
 import {
   Container,
   Content,
   Form,
-  Input,
-  TitleStyled,
+  Header,
   Icon,
+  Input,
+  KeyboardAvoidingViewStyled,
   StyledButton,
   TextButton,
-  KeyboardAvoidingViewStyled,
+  TitleStyled,
   TouchableWithoutFeedbackStyled,
-  Header,
 } from './styles';
-
-import { Keyboard } from 'react-native';
 
 const UserIdentification: React.FC = () => {
   const [active, setActive] = useState<boolean>(false);

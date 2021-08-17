@@ -1,8 +1,8 @@
-import styled from 'styled-components/native';
-import colors from '../../styles/colors';
-import { Title, Button } from '../../components';
-import fonts from '../../styles/fonts';
 import { KeyboardAvoidingView, Platform } from 'react-native';
+import styled from 'styled-components/native';
+import { Button, Title } from '../../components';
+import colors from '../../styles/colors';
+import fonts from '../../styles/fonts';
 
 type Props = {
   active?: boolean;

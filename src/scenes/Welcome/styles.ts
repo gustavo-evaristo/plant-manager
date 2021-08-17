@@ -1,8 +1,8 @@
-import styled from 'styled-components/native';
-import colors from '../../styles/colors';
 import { Dimensions } from 'react-native';
 import { Feather } from '@expo/vector-icons';
+import styled from 'styled-components/native';
 import { Button } from '../../components';
+import colors from '../../styles/colors';
 
 export const Container = styled.SafeAreaView`
   flex: 1;

@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from 'react';
-import { api } from '../../services/api';
+import React, { useEffect, useState } from 'react';
 import avatar from '../../assets/avatar.jpg';
 import { Load } from '../../components';
+import { api } from '../../services/api';
 import { getStore } from '../../store';
-
 import {
+  CardPlant,
   Container,
-  StyledHeader,
   Description,
   DescriptionSpan,
-  TagButtonStyled,
-  TagButtonList,
-  WrapperHeader,
   PlantsContainer,
   PlantsContent,
-  TagButtonContent,
+  StyledHeader,
   TagButtonContainer,
-  CardPlant,
+  TagButtonContent,
+  TagButtonList,
+  TagButtonStyled,
+  WrapperHeader,
 } from './styles';
 
 type EnvironmentsType = {
@@ -101,7 +100,7 @@ export const PlantSelect: React.FC = () => {
       <TagButtonContainer>
         <TagButtonList>
           {environments.map((item: EnvironmentsType, id: number) => (
-            <TagButtonContent key={id}>
+            <TagButtonContent key={String(id)}>
               <TagButtonStyled
                 tagName={item.title}
                 onPress={() => handleEnvironments(item.key)}
@@ -114,6 +113,7 @@ export const PlantSelect: React.FC = () => {
       <PlantsContainer>
         <PlantsContent
           data={filtered}
+          keyExtractor={(item: Plants) => String(item.id)}
           renderItem={({ item }: any) => <CardPlant key={item.id} image={item.photo} title={item.name} />}
           showsVerticalScrollIndicator={false}
           numColumns={2}

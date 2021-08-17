@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
 import { ifStyle } from '@platformbuilders/helpers';
+import styled from 'styled-components/native';
 import colors from '../../styles/colors';
 import fonts from '../../styles/fonts';
 

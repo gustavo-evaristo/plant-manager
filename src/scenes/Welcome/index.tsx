@@ -1,19 +1,26 @@
-import React from 'react';
-
-import { Container, Image, ButtonStyled, Icon } from './styles';
-
-import { Title, Subtitle } from '../../components';
-
-import Watering from '../../assets/watering.png';
-
+import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import Watering from '../../assets/watering.png';
+import { Subtitle, Title } from '../../components';
+import { getStore } from '../../store';
+import { ButtonStyled, Container, Icon, Image } from './styles';
 
 export const Welcome: React.FC = () => {
+  const [logged, setLogged] = useState<boolean>(false);
+
   const navigation = useNavigation<any>();
 
   const handleNavigation = () => {
-    navigation.push('UserIdentification');
+    logged ? navigation.push('PlantSelect') : navigation.push('UserIdentification');
   };
+
+  const handleLogged = async () => {
+    setLogged(!!(await getStore('@plantmanager:username')));
+  };
+
+  useEffect(() => {
+    handleLogged();
+  }, []);
 
   return (
     <Container>

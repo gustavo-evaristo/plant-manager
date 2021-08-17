@@ -1,7 +1,7 @@
+import { SvgFromUri } from 'react-native-svg';
 import styled from 'styled-components/native';
 import colors from '../../styles/colors';
 import { Title } from '../Title';
-import { SvgFromUri } from 'react-native-svg';
 
 export const Container = styled.View`
   width: 150px;

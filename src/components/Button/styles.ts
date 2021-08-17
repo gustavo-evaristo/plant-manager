@@ -1,6 +1,6 @@
+import { ifStyle } from '@platformbuilders/helpers';
 import styled from 'styled-components/native';
 import colors from '../../styles/colors';
-import { ifStyle } from '@platformbuilders/helpers';
 
 const isSmall = ifStyle('small');
 const isMedium = ifStyle('medium');

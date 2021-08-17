@@ -1,7 +1,6 @@
 import React from 'react';
-import { Container, Animation } from './styles';
-
 import loadAnimation from '../../assets/load.json';
+import { Animation, Container } from './styles';
 
 export const Load: React.FC = () => (
   <Container>

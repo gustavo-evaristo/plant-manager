@@ -1,7 +1,7 @@
-import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+import { useNavigation } from '@react-navigation/native';
 
-import { Container, Description, TitleStyled, Icon, StyledButton, TextButton } from './styles';
+import { Container, Description, Icon, StyledButton, TextButton, TitleStyled } from './styles';
 
 export const Confirmation: React.FC = () => {
   const navigation = useNavigation<any>();

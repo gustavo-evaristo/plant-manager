@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
+import { Button, Subtitle, Title } from '../../components';
 import colors from '../../styles/colors';
-import { Title, Button, Subtitle } from '../../components';
 import fonts from '../../styles/fonts';
 
 export const Container = styled.SafeAreaView`

@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+import styled from 'styled-components/native';
 import { Subtitle, Title } from '../';
 
 export const Container = styled.View`

@@ -1,6 +1,6 @@
 import React from 'react';
 import { ImageSourcePropType } from 'react-native';
-import { Container, Content, TitleName, TitleStyled, Avatar } from './styles';
+import { Avatar, Container, Content, TitleName, TitleStyled } from './styles';
 
 type Props = {
   name: string;
