@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { ListRenderItemInfo } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import avatar from '../../assets/avatar.jpg';
 import { Load } from '../../components';
 import { api } from '../../services/api';
@@ -44,6 +46,8 @@ export const PlantSelect: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState<string>('');
 
+  const navigation = useNavigation<any>();
+
   const handleUsername = async () => {
     setUsername(await getStore('@plantmanager:username'));
   };
@@ -82,6 +86,10 @@ export const PlantSelect: React.FC = () => {
     setFiltered(filteredPlants);
   };
 
+  const handlePlantSelect = (plant: Plants) => {
+    navigation.push('PlantRegister', { plant });
+  };
+
   useEffect(() => {
     getEnvironments();
     handleUsername();
@@ -114,7 +122,9 @@ export const PlantSelect: React.FC = () => {
         <PlantsContent
           data={filtered}
           keyExtractor={(item: Plants) => String(item.id)}
-          renderItem={({ item }: any) => <CardPlant key={item.id} image={item.photo} title={item.name} />}
+          renderItem={({ item }: ListRenderItemInfo<Plants>) => (
+            <CardPlant key={item.id} image={item.photo} title={item.name} onPress={() => handlePlantSelect(item)} />
+          )}
           showsVerticalScrollIndicator={false}
           numColumns={2}
         />

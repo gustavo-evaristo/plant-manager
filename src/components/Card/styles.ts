@@ -3,6 +3,10 @@ import styled from 'styled-components/native';
 import colors from '../../styles/colors';
 import { Title } from '../Title';
 
+export const Wrapper = styled.TouchableOpacity.attrs({
+  activeOpacity: 0.7,
+})``;
+
 export const Container = styled.View`
   width: 150px;
   height: 155px;
