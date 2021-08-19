@@ -12,14 +12,14 @@ export const Card = styled.View`
 `;
 
 export const Image = styled.Image`
-  width: 56px;
-  height: 56px;
+  width: 48px;
+  height: 48px;
 `;
 
 export const Description = styled.Text`
   flex: 1;
   margin-left: 25px;
-  font-size: 17px;
+  font-size: 14px;
   text-align: left;
   color: ${colors.blue};
   font-family: ${fonts.text};
